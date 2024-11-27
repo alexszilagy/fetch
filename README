@@ -1,0 +1,25 @@
+To run:
+1. Clone the repo
+2. Navigate to the fetchAssessment folder
+3. In the terminal, run `go build`
+    3.a. If prompted, run: `go get github.com/google/uuid` and then run `go build`
+4. Run `go run .`
+5. You should see the text: "Listening on localHost:8080..." on the console.
+6. Use postman or any equivalent service with the following requests:
+    1. Method: POST
+        URL: http://localhost:8080/receipts/process
+        Add a request body, ex:
+        {
+            "retailer": "Target1234",
+            "purchaseDate": "2022-01-01",
+            "purchaseTime": "16:00",
+            "total": "1.25",
+            "items": [
+                {"shortDescription": "Pepsi - 12-oz", "price": "231.25"},
+                {"shortDescription": "Pepsi - 12-oz", "price": "1.25"},
+                {"shortDescription": "Pepsi - 12-oz", "price": "1.25"}
+            ]
+        }
+    2. Method: GET
+        URL: http://localhost:8080/receipts/{id}/points
+            -> Replace {id} with an id response from the POST API
